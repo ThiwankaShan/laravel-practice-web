@@ -18,9 +18,9 @@
                             <dd class="col-6">{{ $user->email }}</dd>
                         </dl>
 
- <a href="#" class="btn btn-primary">Edit Your Profile</a>
- <a href="#" class="btn btn-danger">Delete Your Profile</a>
- <a href="#" class="btn btn-secondary">Back</a>
+ <a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit Your Profile</a>
+ <a href="" class="btn btn-danger">Delete Your Profile</a>
+ <a href="{{ route('home')}}" class="btn btn-secondary">Back</a>
 
   </div>
  
