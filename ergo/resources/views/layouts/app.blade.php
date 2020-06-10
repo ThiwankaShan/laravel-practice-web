@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-info  shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-info shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -60,7 +60,15 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                   <?php
+                                     $user=Auth::user();
 
+                                   ?>
+                                    <a class="dropdown-item" href="{{ route('users.show',$user->id) }}"
+                                     >
+                                        {{ __('Your Profile') }}
+                                    </a>
+                                  
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
