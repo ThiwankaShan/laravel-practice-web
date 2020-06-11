@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
+
         return view('users.read',compact('user'));
     }
 
@@ -88,8 +88,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
-    {
-        //
+
+    public function destroy($id)
+{
+    $user = User::find($id);
+    $user->delete();
+    //redirect to
+    return redirect(route('home'))->with("Success,account has been deleted");
+
     }
 }
