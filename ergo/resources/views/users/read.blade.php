@@ -6,7 +6,7 @@
     Your Profile
   </h1>
   <div class="card-body">
-    
+
                          <dl class="row">
                             <dt class="col-6">First Name:</dt>
                             <dd class="col-6"> {{ $user->fname }}</dd>
@@ -19,11 +19,15 @@
                         </dl>
 
  <a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit Your Profile</a>
- <a href="" class="btn btn-danger">Delete Your Profile</a>
+ <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+ @csrf
+@method('DELETE')
+ <button  class="btn btn-danger">Delete Your Profile</button>
+ </form>
  <a href="{{ route('home')}}" class="btn btn-secondary">Back</a>
 
   </div>
- 
+
 </div>
 
 
@@ -34,7 +38,7 @@
 
 
 
- 
-   
+
+
 
 @endsection
