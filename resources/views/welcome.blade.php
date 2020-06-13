@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 100px;
+                font-size: 110px;
                 font-weight:blod;
                 font-family: ' sans-serif';
             }
