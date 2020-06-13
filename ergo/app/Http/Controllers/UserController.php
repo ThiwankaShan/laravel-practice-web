@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -47,7 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        
+
         return view('users.read',compact('user'));
     }
 
@@ -59,7 +60,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.update',compact('user'));
     }
 
     /**
@@ -71,7 +72,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->fname=$request->fname;
+        $user->lname=$request->lname;
+        $user->uname=$request->uname;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->save();
+        //$user->update($request->all());
+        return redirect(route('users.show',$user->id));
     }
 
     /**
@@ -80,8 +88,13 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
-    {
-        //
+
+    public function destroy($id)
+{
+    $user = User::find($id);
+    $user->delete();
+    //redirect to
+    return redirect(route('home'))->with("Success,account has been deleted");
+
     }
 }
