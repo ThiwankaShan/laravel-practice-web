@@ -7,4 +7,6 @@ Practice project to learn laravel
 Practice elements
 -----------------
 - [x] User auth
-- [x] CRUD operations 
+- [x] CRUD operations for users
+- [ ] admin user 
+- [ ] CRUD operations for books
